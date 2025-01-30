@@ -17,7 +17,7 @@ const userRouter = require('./routes/userroutes')
 //     console.error('Global error handler:',error.message)
 //     res.status(500).json({message: error.message})
 // })
-app.use(cors())
+//app.use(cors())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -27,12 +27,12 @@ app.use(userRouter)
 app.use(auth, jobsRouter)
 
 
-const port = 1995
+const port = process.env.PORT || 1995
 
 const init = async () => {
     try {
         await sequelize.authenticate()
-        //await sequelize.sync({alter:true})
+        await sequelize.sync({alter:true})
         app.listen(port)
         console.log(`connected to MYSQL DB`)
         console.log(`Server is listening to port ${port}`)
