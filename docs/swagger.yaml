@@ -7,8 +7,8 @@ info:
 servers:
   - url: http://localhost:1995
     description: Local server
-  - url: https://localhost:1995
-    description: Local server
+  - url: https://jobsapi-404x.onrender.com
+    description: Production server
 
 components:
   securitySchemes:
